@@ -76,4 +76,14 @@ public class MeetingService {
 
         return meetingDto;
     }
+
+    public MeetingDto getUserMeetingInfo(UUID id, String userName){
+        Optional<Meeting> meeting = meetingRepository.findByMeetingId(id);
+        if (meeting.isEmpty()) {
+            throw new NotFoundException(ErrorCode.MEETING_NOT_FOUND);
+        }
+        MeetingDto meetingDto = meetingToDto(meeting.get());
+        meetingDto.setTimes(timeService.getUserTimeList(userName, id));
+        return meetingDto;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.togather.domain.meeting.controller;
 import com.example.togather.domain.meeting.dto.MeetingDto;
 import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.service.MeetingService;
+import com.example.togather.domain.user.entity.User;
 import com.example.togather.global.dto.ResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import java.util.UUID;
@@ -39,5 +40,10 @@ public class MeetingController {
         return new ResponseEntity<>(ResponseDto.res(HttpStatus.OK, "미팅 확인 완료", meetingDto), HttpStatus.OK);
     }
 
-
+    @Operation(summary="미팅에 대한 유저의 시간표", description="미팅에 대한 유저의 기존 시간 목록을 조회합니다.")
+    @GetMapping("/check-meeting/{meeting_id}/user/{user_name}")
+    public ResponseEntity<ResponseDto<MeetingDto>> getUserTime(@PathVariable("meeting_id")UUID meetingId, @PathVariable("user_name") String userName){
+        MeetingDto meetingDto = meetingService.getUserMeetingInfo(meetingId, userName);
+        return new ResponseEntity<>(ResponseDto.res(HttpStatus.OK,"유저의 시간 목록 조회", meetingDto), HttpStatus.OK);
+    }
 }

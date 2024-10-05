@@ -47,9 +47,13 @@ public class TimeService {
 
     public void deleteTimeList(DeleteTimeRequest deleteTimeRequest, UUID meetingId){
         List<Long> timeId = deleteTimeRequest.getDeleteTimeIdList();
-
-
         timeId.forEach(timeJpaRepository::deleteById);
+    }
+
+    public List<TimeResponse> getUserTimeList(String userName, UUID meetingId){
+        User user = findUserByMeetingIdAndUser(meetingId, userName);
+        List<Time> timeList = timeJpaRepository.findAllByMeetingAndUser(findMeetingByMeetingId(meetingId), user);
+        return timeList.stream().map(TimeResponse::from).toList();
     }
 
     private void register(Time t){
