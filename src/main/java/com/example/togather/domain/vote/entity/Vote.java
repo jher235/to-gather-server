@@ -2,10 +2,12 @@ package com.example.togather.domain.vote.entity;
 
 import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.place.entity.Place;
-import com.example.togather.domain.user.User;
+import com.example.togather.domain.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
