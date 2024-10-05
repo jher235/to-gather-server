@@ -2,6 +2,7 @@ package com.example.togather.domain.meeting.entity;
 
 import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.user.User;
+import com.example.togather.domain.vote.entity.Vote;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,5 +31,9 @@ public class Meeting {
     @OneToMany(mappedBy = "meeting")
     @JsonManagedReference
     private List<Place> places;
+
+    @OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Vote> votes;
 
 }

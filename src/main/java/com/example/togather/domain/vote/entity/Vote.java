@@ -1,5 +1,6 @@
-package com.example.togather.domain.vote;
+package com.example.togather.domain.vote.entity;
 
+import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -25,8 +26,14 @@ public class Vote {
     @JoinColumn(name = "place_id")
     private Place place;
 
-    public Vote(User user, Place place){
+    @ManyToOne(optional = false)
+    @JsonBackReference
+    @JoinColumn(name = "meeting_id")
+    private Meeting meeting;
+
+    public Vote(User user, Place place, Meeting meeting){
         this.user = user;
         this.place = place;
+        this.meeting = meeting;
     }
 }
