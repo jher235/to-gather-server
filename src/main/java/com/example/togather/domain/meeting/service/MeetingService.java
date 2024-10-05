@@ -6,11 +6,16 @@ import com.example.togather.domain.meeting.repository.MeetingRepository;
 import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.place.repository.PlaceRepository;
 import com.example.togather.domain.time.service.TimeService;
+import com.example.togather.exception.BadRequestException;
 import com.example.togather.exception.NotFoundException;
 import com.example.togather.exception.errorcode.ErrorCode;
 import com.example.togather.global.dto.ErrorResponseDto;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +36,20 @@ public class MeetingService {
     }
 
     public Meeting createMeeting(MeetingDto meetingDto) {
+        if (Objects.equals(meetingDto.getStartTime(), meetingDto.getEndTime())) {
+            throw new BadRequestException(ErrorCode.LENGTH);
+        }
+        try {
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            Date start = timeFormat.parse(meetingDto.getStartTime());
+            Date end = timeFormat.parse(meetingDto.getEndTime());
+
+            if (start.compareTo(end) >= 0) {
+                throw new BadRequestException(ErrorCode.INVALID_TIME);
+            }
+        } catch (ParseException e) {
+            throw new BadRequestException(ErrorCode.PATTERN);
+        }
         Meeting meeting = dtoToMeeting(meetingDto);
         List<Place> places = new ArrayList<>();
 

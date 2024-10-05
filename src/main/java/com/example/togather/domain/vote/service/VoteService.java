@@ -34,13 +34,13 @@ public class VoteService {
      **/
     public void voting(VoteSelectDto voteSelectDto) {
         Meeting meeting = meetingRepository.findByMeetingId(voteSelectDto.getMeetingId())
-                .orElseThrow(() -> new NotFoundException(ErrorCode.MEETING_NOT_FOUND));
+            .orElseThrow(() -> new NotFoundException(ErrorCode.MEETING_NOT_FOUND));
         Place place = meeting.getPlaces().stream()
-                .filter(p -> p.getPlaceId().equals(voteSelectDto.getPlaceId()))
-                .findFirst()
-                .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_PLACE));
+            .filter(p -> p.getPlaceId().equals(voteSelectDto.getPlaceId()))
+            .findFirst()
+            .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_PLACE));
         User user = userRepository.findByUserName(voteSelectDto.getUserName())
-                .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
+            .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
 
         Vote vote = new Vote(user, place, meeting);
         voteRepository.save(vote);  // 투표 데이터 저장
