@@ -11,7 +11,13 @@ public enum ErrorCode {
     NOT_BLANK("4000", "필수값이 공백입니다."),
     PATTERN("4001","형식에 맞지 않습니다."),
     LENGTH("4002", "길이가 유효하지 않습니다."),
-    NOT_NULL("4003", "필수값이 공백입니다.")
+    NOT_NULL("4003", "필수값이 공백입니다."),
+
+    //404
+    MEETING_NOT_FOUND("4040", "요청하신 미팅을 찾을 수 없습니다."),
+    USER_NOT_FOUND("4041", "존재하지 않는 유저입니다.")
+
+
     ;
 
     private final String code;
