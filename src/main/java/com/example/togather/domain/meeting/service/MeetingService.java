@@ -5,6 +5,7 @@ import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.repository.MeetingRepository;
 import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.place.repository.PlaceRepository;
+import com.example.togather.domain.time.service.TimeService;
 import com.example.togather.exception.NotFoundException;
 import com.example.togather.exception.errorcode.ErrorCode;
 import com.example.togather.global.dto.ErrorResponseDto;
@@ -20,10 +21,13 @@ public class MeetingService {
 
     private final MeetingRepository meetingRepository;
     private final PlaceRepository placeRepository;
+    private final TimeService timeService;
 
-    public MeetingService(MeetingRepository meetingRepository, PlaceRepository placeRepository) {
+    public MeetingService(MeetingRepository meetingRepository, PlaceRepository placeRepository,
+        TimeService timeService) {
         this.meetingRepository = meetingRepository;
         this.placeRepository = placeRepository;
+        this.timeService = timeService;
     }
 
     public Meeting createMeeting(MeetingDto meetingDto) {
@@ -52,11 +56,24 @@ public class MeetingService {
         return meeting;
     }
 
-    public Meeting checkMeeting(UUID id) {
+    private MeetingDto meetingToDto(Meeting meeting) {
+        MeetingDto meetingDto = new MeetingDto();
+        meetingDto.setMeetingTitle(meeting.getMeetingTitle());
+        meetingDto.setStartDate(meeting.getStartDate());
+        meetingDto.setEndDate(meeting.getEndDate());
+        meetingDto.setStartTime(meeting.getStartTime());
+        meetingDto.setEndTime(meeting.getEndTime());
+        return meetingDto;
+    }
+
+    public MeetingDto checkMeeting(UUID id) {
         Optional<Meeting> meeting = meetingRepository.findByMeetingId(id);
         if (meeting.isEmpty()) {
             throw new NotFoundException(ErrorCode.MEETING_NOT_FOUND);
         }
-        return meeting.get();
+        MeetingDto meetingDto = meetingToDto(meeting.get());
+        meetingDto.setTimes(timeService.getTimeList(id));
+
+        return meetingDto;
     }
 }

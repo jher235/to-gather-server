@@ -1,5 +1,6 @@
 package com.example.togather.domain.user.repository;
 
+
 import com.example.togather.domain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -21,7 +21,6 @@ public class MeetingController {
 
     private final MeetingService meetingService;
 
-
     public MeetingController(MeetingService meetingService) {
         this.meetingService = meetingService;
     }
@@ -34,9 +33,11 @@ public class MeetingController {
     }
 
     @Operation(summary="미팅 확인", description="미팅 정보를 불러옵니다.")
-    @GetMapping("/checkMeeting/{id}")
-    public ResponseEntity<ResponseDto<Meeting>> checkMeeting(@PathVariable UUID id) {
-        Meeting meeting = meetingService.checkMeeting(id);
-        return new ResponseEntity<>(ResponseDto.res(HttpStatus.OK, "미팅 확인 완료", meeting), HttpStatus.OK);
+    @GetMapping("/checkMeeting/{meeting_id}")
+    public ResponseEntity<ResponseDto<MeetingDto>> checkMeeting(@PathVariable("meeting_id") UUID id) {
+        MeetingDto meetingDto = meetingService.checkMeeting(id);
+        return new ResponseEntity<>(ResponseDto.res(HttpStatus.OK, "미팅 확인 완료", meetingDto), HttpStatus.OK);
     }
+
+
 }
