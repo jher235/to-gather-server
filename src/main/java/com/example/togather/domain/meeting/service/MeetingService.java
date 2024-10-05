@@ -55,7 +55,7 @@ public class MeetingService {
     public Meeting checkMeeting(UUID id) {
         Optional<Meeting> meeting = meetingRepository.findByMeetingId(id);
         if (meeting.isEmpty()) {
-            throw new NotFoundException(ErrorCode.NOT_FOUND_MEETING);
+            throw new NotFoundException(ErrorCode.MEETING_NOT_FOUND);
         }
         return meeting.get();
     }
