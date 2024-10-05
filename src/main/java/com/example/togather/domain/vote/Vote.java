@@ -1,7 +1,7 @@
 package com.example.togather.domain.vote;
 
 import com.example.togather.domain.place.Place;
-import com.example.togather.domain.user.User;
+import com.example.togather.domain.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;

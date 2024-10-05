@@ -1,11 +1,9 @@
 package com.example.togather.domain.meeting;
 
-import com.example.togather.domain.user.User;
+import com.example.togather.domain.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
