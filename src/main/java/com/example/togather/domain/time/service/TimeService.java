@@ -1,12 +1,12 @@
 package com.example.togather.domain.time.service;
 
-import com.example.togather.domain.meeting.Meeting;
+import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.repository.MeetingRepository;
 import com.example.togather.domain.time.Time;
 import com.example.togather.domain.time.dto.request.TimeRegister;
 import com.example.togather.domain.time.dto.request.TimeRegisterList;
 import com.example.togather.domain.time.repository.TimeJpaRepository;
-import com.example.togather.domain.user.User;
+import com.example.togather.domain.user.entity.User;
 import com.example.togather.domain.user.repository.UserRepository;
 import com.example.togather.exception.NotFoundException;
 import com.example.togather.exception.errorcode.ErrorCode;
