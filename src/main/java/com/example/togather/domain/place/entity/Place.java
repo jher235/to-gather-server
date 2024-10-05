@@ -17,6 +17,4 @@ public class Place {
     @JsonBackReference
     @JoinColumn(name = "meeting_id")
     private Meeting meeting;
-
-
 }
