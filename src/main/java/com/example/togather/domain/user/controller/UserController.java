@@ -26,5 +26,4 @@ public class UserController {
         return new ResponseEntity<>(ResponseDto.res(HttpStatus.OK,"유저 등록 성공", userDto),HttpStatus.OK);
     }
 
-
 }
