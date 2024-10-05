@@ -1,4 +1,4 @@
-package com.example.togather.domain.time;
+package com.example.togather.domain.time.entity;
 
 import com.example.togather.domain.user.entity.User;
 import com.example.togather.domain.meeting.entity.Meeting;
