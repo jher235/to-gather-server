@@ -1,6 +1,6 @@
 package com.example.togather.domain.vote;
 
-import com.example.togather.domain.place.Place;
+import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
