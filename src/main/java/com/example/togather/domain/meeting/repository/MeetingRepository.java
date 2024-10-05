@@ -8,5 +8,4 @@ import java.util.UUID;
 
 public interface MeetingRepository extends JpaRepository<Meeting, UUID> {
         Optional<Meeting> findByMeetingId(UUID id);
-
 }

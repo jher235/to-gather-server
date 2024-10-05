@@ -6,7 +6,6 @@ import java.util.UUID;
 
 @Getter
 public class VoteSelectDto {
-    private Long voteId;
     private UUID meetingId;
     private Long placeId;
     private String userName;

@@ -1,6 +1,6 @@
 package com.example.togather.domain.vote.controller;
 
-import com.example.togather.domain.vote.dto.request.VoteSelectListDto;
+import com.example.togather.domain.vote.dto.request.VoteSelectDto;
 import com.example.togather.domain.vote.dto.response.VoteResponseData;
 import com.example.togather.domain.vote.service.VoteService;
 import com.example.togather.global.dto.ResponseDto;
@@ -24,8 +24,8 @@ public class VoteController {
      *
      **/
     @PostMapping
-    public ResponseEntity<ResponseDto<Void>> voting(@RequestBody @Valid VoteSelectListDto voteSelectListDto) {
-        voteService.voting(voteSelectListDto);
+    public ResponseEntity<ResponseDto<Void>> voting(@RequestBody @Valid VoteSelectDto voteSelectDto) {
+        voteService.voting(voteSelectDto);
         return new ResponseEntity<>(ResponseDto.res(HttpStatus.CREATED, "투표 완료"), HttpStatus.CREATED);
     }
 
