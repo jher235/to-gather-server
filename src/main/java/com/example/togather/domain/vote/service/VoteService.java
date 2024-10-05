@@ -31,19 +31,18 @@ public class VoteService {
      * 투표하기
      *
      **/
-    public void voting(VoteSelectListDto voteSelectListDto) {
+    public void voting(VoteSelectDto voteSelectDto) {
+        Meeting meeting = meetingRepository.findByMeetingId(voteSelectDto.getMeetingId())
+            .orElseThrow(() -> new NotFoundException(ErrorCode.MEETING_NOT_FOUND));
+        Place place = meeting.getPlaces().stream()
+            .filter(p -> p.getPlaceId().equals(voteSelectDto.getPlaceId()))
+            .findFirst()
+            .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_PLACE));
+        User user = userRepository.findByUserName(voteSelectDto.getUserName())
+            .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
 
-        for (VoteSelectDto voteSelectDto : voteSelectListDto.getVoteSelectDtoList()) {
-            User user = userRepository.findByUserName(voteSelectDto.getUserName())
-                    .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
-            Place place = placeRepository.findByPlaceId(voteSelectDto.getPlaceId())
-                    .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_PLACE));
-            Meeting meeting = meetingRepository.findById(voteSelectDto.getMeetingId())
-                    .orElseThrow(() -> new NotFoundException(ErrorCode.MEETING_NOT_FOUND));
-
-            Vote vote = new Vote(user, place, meeting);
-            voteRepository.save(vote);  // 투표 데이터 저장
-        }
+        Vote vote = new Vote(user, place, meeting);
+        voteRepository.save(vote);  // 투표 데이터 저장
     }
 
     /**

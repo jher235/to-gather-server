@@ -17,7 +17,8 @@ public enum ErrorCode {
     MEETING_NOT_FOUND("4040", "요청하신 미팅을 찾을 수 없습니다."),
 
     USER_NOT_FOUND("4041", "존재하지 않는 유저입니다."),
-    NOT_FOUND_PLACE("4042", "요청하신 장소를 찾을 수 없습니다.");
+    NOT_FOUND_PLACE("4042", "요청하신 장소를 찾을 수 없습니다."),
+    INVALID_TIME("4005", "시작 시간은 끝 시간의 이전으로 설정해야 합니다.");
 
     private final String code;
     private final String message;
