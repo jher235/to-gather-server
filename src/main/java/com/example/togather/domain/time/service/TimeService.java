@@ -7,7 +7,7 @@ import com.example.togather.domain.time.entity.Time;
 import com.example.togather.domain.time.dto.request.TimeRegister;
 import com.example.togather.domain.time.dto.request.TimeRegisterList;
 import com.example.togather.domain.time.repository.TimeJpaRepository;
-import com.example.togather.domain.user.User;
+import com.example.togather.domain.user.entity.User;
 import com.example.togather.domain.user.repository.UserRepository;
 import com.example.togather.exception.NotFoundException;
 import com.example.togather.exception.errorcode.ErrorCode;

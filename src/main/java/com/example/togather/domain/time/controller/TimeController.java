@@ -3,7 +3,6 @@ package com.example.togather.domain.time.controller;
 import com.example.togather.domain.time.dto.request.TimeRegisterList;
 import com.example.togather.domain.time.dto.response.TimeResponse;
 import com.example.togather.domain.time.service.TimeService;
-import com.example.togather.domain.user.User;
 import com.example.togather.global.dto.ResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
