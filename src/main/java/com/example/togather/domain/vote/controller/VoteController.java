@@ -1,7 +1,6 @@
 package com.example.togather.domain.vote.controller;
 
 import com.example.togather.domain.vote.dto.request.VoteSelectDto;
-import com.example.togather.domain.vote.dto.request.VoteSelectListDto;
 import com.example.togather.domain.vote.dto.response.VoteResponseData;
 import com.example.togather.domain.vote.service.VoteService;
 import com.example.togather.global.dto.ResponseDto;

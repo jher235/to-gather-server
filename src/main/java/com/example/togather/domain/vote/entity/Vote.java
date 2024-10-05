@@ -5,6 +5,7 @@ import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
