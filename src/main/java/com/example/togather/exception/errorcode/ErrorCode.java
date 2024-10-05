@@ -15,10 +15,9 @@ public enum ErrorCode {
 
     //404
     MEETING_NOT_FOUND("4040", "요청하신 미팅을 찾을 수 없습니다."),
-    USER_NOT_FOUND("4041", "존재하지 않는 유저입니다.")
+    USER_NOT_FOUND("4041", "존재하지 않는 유저입니다.");
 
 
-    ;
 
     private final String code;
     private final String message;

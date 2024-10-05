@@ -1,6 +1,6 @@
 package com.example.togather.domain.time.service;
 
-import com.example.togather.domain.meeting.Meeting;
+import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.repository.MeetingRepository;
 import com.example.togather.domain.time.Time;
 import com.example.togather.domain.time.dto.request.TimeRegister;
