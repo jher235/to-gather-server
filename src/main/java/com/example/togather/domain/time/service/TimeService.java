@@ -2,6 +2,7 @@ package com.example.togather.domain.time.service;
 
 import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.repository.MeetingRepository;
+import com.example.togather.domain.time.dto.request.DeleteTimeRequest;
 import com.example.togather.domain.time.dto.response.TimeResponse;
 import com.example.togather.domain.time.entity.Time;
 import com.example.togather.domain.time.dto.request.TimeRegister;
@@ -44,6 +45,12 @@ public class TimeService {
         return timeList.stream().map(TimeResponse::from).toList();
     }
 
+    public void deleteTimeList(DeleteTimeRequest deleteTimeRequest, UUID meetingId){
+        List<Long> timeId = deleteTimeRequest.getDeleteTimeIdList();
+
+
+        timeId.forEach(timeJpaRepository::deleteById);
+    }
 
     private void register(Time t){
         timeJpaRepository.save(t);

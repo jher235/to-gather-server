@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class TimeResponse {
+    private Long id;
     private Long blockNum;
     private boolean whether;
     private String memo;
     private String userName;
 
     public static TimeResponse from(Time time){
-        return new TimeResponse(time.getBlockId(), time.isWhether(), time.getMemo(), time.getUser().getUserName());
+        return new TimeResponse(time.getTimeId(), time.getBlockId(), time.isWhether(), time.getMemo(), time.getUser().getUserName());
     }
 }
