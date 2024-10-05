@@ -1,5 +1,6 @@
 package com.example.togather.domain.meeting.dto;
 
+import com.example.togather.domain.time.dto.response.TimeResponse;
 import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,8 @@ public class MeetingDto {
     private String endTime;
 
     private List<String> places;
+
+    private List<TimeResponse> times;
 
 
 }
