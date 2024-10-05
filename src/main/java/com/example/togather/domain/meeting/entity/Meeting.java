@@ -25,7 +25,7 @@ public class Meeting {
 
     @OneToMany(mappedBy = "meeting",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List<User> user;
+    private List<User> users;
 
     @OneToMany(mappedBy = "meeting")
     @JsonManagedReference

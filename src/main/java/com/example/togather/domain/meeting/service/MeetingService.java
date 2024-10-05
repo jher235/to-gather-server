@@ -5,10 +5,14 @@ import com.example.togather.domain.meeting.entity.Meeting;
 import com.example.togather.domain.meeting.repository.MeetingRepository;
 import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.place.repository.PlaceRepository;
+import com.example.togather.exception.NotFoundException;
+import com.example.togather.exception.errorcode.ErrorCode;
+import com.example.togather.global.dto.ErrorResponseDto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -50,6 +54,9 @@ public class MeetingService {
 
     public Meeting checkMeeting(UUID id) {
         Optional<Meeting> meeting = meetingRepository.findByMeetingId(id);
+        if (meeting.isEmpty()) {
+            throw new NotFoundException(ErrorCode.NOT_FOUND_MEETING);
+        }
         return meeting.get();
     }
 }
