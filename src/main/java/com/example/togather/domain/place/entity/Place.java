@@ -1,6 +1,6 @@
-package com.example.togather.domain.place;
+package com.example.togather.domain.place.entity;
 
-import com.example.togather.domain.meeting.Meeting;
+import com.example.togather.domain.meeting.entity.Meeting;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;

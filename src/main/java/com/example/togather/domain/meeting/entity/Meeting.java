@@ -1,11 +1,10 @@
-package com.example.togather.domain.meeting;
+package com.example.togather.domain.meeting.entity;
 
+import com.example.togather.domain.place.entity.Place;
 import com.example.togather.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
@@ -19,7 +18,6 @@ public class Meeting {
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "uuid2")
     private UUID meetingId;
     private String meetingTitle;
-    private String meetingPlace;
     private Date startDate;
     private Date endDate;
     private String startTime;
@@ -27,6 +25,10 @@ public class Meeting {
 
     @OneToMany(mappedBy = "meeting",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List<User> user;
+    private List<User> users;
+
+    @OneToMany(mappedBy = "meeting")
+    @JsonManagedReference
+    private List<Place> places;
 
 }
